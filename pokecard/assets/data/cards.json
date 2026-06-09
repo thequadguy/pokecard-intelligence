@@ -1,0 +1,94 @@
+[
+  {
+    "id": "base1-4",
+    "name": "Charizard",
+    "set": "Base Set",
+    "number": "4",
+    "rarity": "Holo Rare",
+    "hp": 120,
+    "types": [
+      "Fire"
+    ],
+    "localNames": {
+      "ja": "リザードン",
+      "zh": "噴火龍",
+      "ko": "리자몽"
+    },
+    "prices": {
+      "en": {
+        "low": 200,
+        "mid": 350,
+        "high": 600
+      },
+      "ja": {
+        "low": 500,
+        "mid": 900,
+        "high": 2000
+      },
+      "zh": {
+        "low": 120,
+        "mid": 220,
+        "high": 400
+      },
+      "ko": {
+        "low": 150,
+        "mid": 280,
+        "high": 500
+      }
+    },
+    "language": "en",
+    "year": 1996,
+    "setNames": {
+      "en": "Base Set",
+      "ja": "第1弾拡張パック",
+      "zh": "基礎系列",
+      "ko": "베이스 세트"
+    }
+  },
+  {
+    "id": "base1-58",
+    "name": "Pikachu",
+    "set": "Base Set",
+    "number": "58",
+    "rarity": "Common",
+    "hp": 40,
+    "types": [
+      "Lightning"
+    ],
+    "localNames": {
+      "ja": "ピカチュウ",
+      "zh": "皮卡丘",
+      "ko": "피카츄"
+    },
+    "prices": {
+      "en": {
+        "low": 5,
+        "mid": 12,
+        "high": 30
+      },
+      "ja": {
+        "low": 8,
+        "mid": 20,
+        "high": 50
+      },
+      "zh": {
+        "low": 4,
+        "mid": 10,
+        "high": 25
+      },
+      "ko": {
+        "low": 5,
+        "mid": 13,
+        "high": 32
+      }
+    },
+    "language": "en",
+    "year": 1996,
+    "setNames": {
+      "en": "Base Set",
+      "ja": "第1弾拡張パック",
+      "zh": "基礎系列",
+      "ko": "베이스 세트"
+    }
+  }
+]
