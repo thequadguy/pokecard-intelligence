@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Charizard",
+    "set": "Base",
+    "condition": "Ungraded",
+    "notes": "Childhood card",
+    "imageUrl": "https://images.pokemontcg.io/base1/4_hires.png",
+    "marketPrice": 728.31
+  },
+  {
+    "name": "Blastoise",
+    "set": "Base",
+    "condition": "Ungraded",
+    "notes": "Found in loft",
+    "imageUrl": "https://images.pokemontcg.io/base1/2_hires.png",
+    "marketPrice": 231.65
+  },
+  {
+    "name": "Mewtwo",
+    "set": "Base",
+    "condition": "LP",
+    "notes": "Childhood binder",
+    "imageUrl": "https://images.pokemontcg.io/base1/10_hires.png",
+    "marketPrice": 75.76
+  }
+]

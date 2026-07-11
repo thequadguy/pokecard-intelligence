@@ -1,0 +1,45 @@
+name: AI Content Engine
+
+on:
+  schedule:
+    - cron: '0 16 * * *' # Runs daily at 12:00 PM EST (16:00 UTC)
+  workflow_dispatch: # Allows manual trigger from the GitHub Actions tab
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          # If google-antigravity isn't public, it would be installed here from a secret wheel or repo
+
+      - name: Run Content Engine
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+          TWITTER_API_KEY_SECRET: ${{ secrets.TWITTER_API_KEY_SECRET }}
+          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+        run: |
+          python agents/main.py
+
+      - name: Commit Content Bank Changes
+        # This will commit the updated content_bank.json back to the repo if it was updated
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add agents/data/content_bank.json
+          git commit -m "chore: save new drafted posts to content bank" || echo "No changes to commit"
+          git push

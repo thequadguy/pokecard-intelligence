@@ -1,0 +1,225 @@
+/* ── Media Kit Specific Styles ── */
+
+.mk-hero { padding-top: 3rem; }
+
+.mk-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.mk-kit-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1.2rem;
+  background: rgba(0, 98, 255, 0.1);
+  border: 1px solid rgba(0, 98, 255, 0.3);
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 1.5rem;
+}
+
+.mk-slab-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.mk-slab-img {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 14px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.06),
+    0 30px 80px rgba(0,0,0,0.7),
+    0 0 50px rgba(201,168,76,0.12);
+}
+
+/* About grid */
+.mk-about-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 4rem;
+  align-items: start;
+}
+
+.mk-identity-card { padding: 1.5rem; }
+
+.mk-slab-mini {
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.mk-identity-details { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.mk-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-size: 0.875rem;
+}
+
+.mk-detail-label {
+  color: var(--silver);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mk-detail-value {
+  color: var(--white);
+  font-weight: 500;
+  text-align: right;
+}
+
+/* Pillars */
+.mk-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.mk-pillar { padding: 2rem; }
+
+.mk-pillar-num {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  background: var(--blue-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.mk-pillar-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+
+.mk-pillar-desc {
+  font-size: 0.875rem;
+  color: var(--silver);
+  line-height: 1.7;
+}
+
+/* Packages */
+.mk-packages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  align-items: stretch;
+}
+
+.mk-package {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+}
+
+.mk-package-featured {
+  border-color: var(--blue-dim);
+  background: rgba(0, 98, 255, 0.06);
+}
+
+.mk-package-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--blue-gradient);
+  color: var(--obsidian);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.25rem 1rem;
+  border-radius: 50px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.mk-package-tier {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.mk-package-desc {
+  font-size: 0.875rem;
+  color: var(--silver);
+  line-height: 1.7;
+}
+
+.mk-package-includes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.mk-package-includes li {
+  font-size: 0.85rem;
+  color: var(--platinum);
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.mk-package-includes li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+  font-weight: 700;
+}
+
+/* Partner chips */
+.mk-partners-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.mk-partner-chip {
+  padding: 0.5rem 1.25rem;
+  background: rgba(0, 98, 255, 0.08);
+  border: 1px solid rgba(0, 98, 255, 0.25);
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--blue-light);
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.mk-partner-chip:hover {
+  background: rgba(0, 98, 255, 0.15);
+  border-color: var(--blue);
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .mk-hero-inner { grid-template-columns: 1fr; }
+  .mk-about-grid { grid-template-columns: 1fr; }
+  .mk-slab-wrap { display: none; }
+}
