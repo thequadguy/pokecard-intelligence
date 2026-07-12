@@ -70,7 +70,7 @@ export default function MediaKit() {
               A returning Pokémon collector with a passion for vintage cards, PSA grading, and smart acquisitions. The journey from childhood collector to serious hobbyist resonates deeply with a massive, underserved audience on X.
             </p>
             <p className="text-silver text-base leading-relaxed mb-8">
-              The face-free format means the focus stays 100% on the cards, the content, and the community — making it the perfect vehicle for authentic brand integration that doesn't feel like an ad.
+              The face-free format means the focus stays 100% on the cards, the content, and the community — making it the perfect vehicle for authentic brand integration that doesn&apos;t feel like an ad.
             </p>
             <div className="flex flex-wrap gap-2">
               {["Vintage Cards", "PSA Grading", "Base Set", "Pack Openings", "Market Analysis"].map(tag => (
@@ -196,10 +196,10 @@ export default function MediaKit() {
       <section className="py-32 text-center relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[radial-gradient(ellipse,rgba(0,98,255,0.15)_0%,transparent_70%)] pointer-events-none" />
         <div className="max-w-[1200px] w-[90%] mx-auto relative z-10">
-          <p className="font-body text-[0.7rem] font-semibold tracking-[0.25em] uppercase text-brand-blue mb-4">Let's Talk</p>
+          <p className="font-body text-[0.7rem] font-semibold tracking-[0.25em] uppercase text-brand-blue mb-4">Let&apos;s Talk</p>
           <h2 className="font-display text-4xl md:text-5xl font-semibold text-gradient-blue mb-6">Ready to Partner?</h2>
           <p className="text-silver max-w-[52ch] mx-auto text-lg mb-10">
-            Reach out directly and let's build a partnership that feels authentic to the community.
+            Reach out directly and let&apos;s build a partnership that feels authentic to the community.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link href="mailto:hello@therarepick.com" className="btn-primary">📧 hello@therarepick.com</Link>

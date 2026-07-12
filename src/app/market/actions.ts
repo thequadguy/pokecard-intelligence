@@ -3,7 +3,7 @@
 import { createClient } from '@/utils/supabase/server'
 import { revalidatePath } from 'next/cache'
 
-export async function addToCollection(card: any) {
+export async function addToCollection(card: { id: string, name: string, set: string, imageUrl: string, marketPrice: number, trend: string }) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
@@ -32,7 +32,7 @@ export async function addToCollection(card: any) {
   return { success: true }
 }
 
-export async function addToWatchlist(card: any, targetPrice: number) {
+export async function addToWatchlist(card: { id: string, name: string, set: string, imageUrl: string, marketPrice: number, trend: string }, targetPrice: number) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 

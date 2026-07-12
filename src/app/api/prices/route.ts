@@ -21,7 +21,7 @@ export async function GET(request: Request) {
     const json = await res.json();
     
     // Transform into our market format
-    const results = json.data.map((card: any) => {
+    const results = json.data.map((card: { id: string, name: string, set: string, imageUrl: string, marketPrice: number, trend: string }) => {
       // Safely extract price data if available
       const price = card.tcgplayer?.prices?.holofoil?.market || 
                     card.tcgplayer?.prices?.normal?.market || 

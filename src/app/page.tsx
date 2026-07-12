@@ -81,7 +81,7 @@ export default function Home() {
               <h2 className="font-display text-4xl md:text-5xl font-semibold text-gradient-blue">This One&apos;s For You Too</h2>
               
               <blockquote className="font-display text-xl md:text-2xl italic text-brand-blue-light border-l-4 border-brand-blue pl-6 my-4">
-                "You had a favourite card. Maybe it was a Charizard, maybe it was something nobody else cared about — but you cared. That feeling never really went away."
+                &quot;You had a favourite card. Maybe it was a Charizard, maybe it was something nobody else cared about — but you cared. That feeling never really went away.&quot;
               </blockquote>
               
               <p className="text-silver text-base leading-relaxed">
@@ -188,7 +188,7 @@ export default function Home() {
           <p className="font-body text-[0.7rem] font-semibold tracking-[0.25em] uppercase text-brand-blue mb-4">Partnerships</p>
           <h2 className="font-display text-4xl md:text-5xl font-semibold text-gradient-blue mb-6">Work With The Rare Pick</h2>
           <p className="text-silver max-w-[60ch] text-lg mb-12">
-            Growing a passionate community of Pokémon collectors and fans on X. If your brand loves this hobby as much as I do — let's talk.
+            Growing a passionate community of Pokémon collectors and fans on X. If your brand loves this hobby as much as I do — let&apos;s talk.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -215,7 +215,7 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-14">
-            <p className="text-silver/80 text-sm mb-6">Ready to reach serious collectors? Let's build something together.</p>
+            <p className="text-silver/80 text-sm mb-6">Ready to reach serious collectors? Let&apos;s build something together.</p>
             <div className="flex gap-4 justify-center flex-wrap">
               <Link href="/media-kit" className="btn-primary">View Media Kit</Link>
               <Link href="mailto:hello@therarepick.com" className="btn-secondary">Get In Touch</Link>
@@ -231,7 +231,7 @@ export default function Home() {
           <p className="font-body text-[0.7rem] font-semibold tracking-[0.25em] uppercase text-brand-blue mb-4">Come Along</p>
           <h2 className="font-display text-4xl md:text-5xl font-semibold text-gradient-blue mb-6">Follow the Journey</h2>
           <p className="text-silver max-w-[52ch] mx-auto text-lg mb-10">
-            This is just the start — new finds, new ideas, new discoveries. Follow on X and let's explore the hobby together.
+            This is just the start — new finds, new ideas, new discoveries. Follow on X and let&apos;s explore the hobby together.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link href="https://x.com/TheRarePick" target="_blank" className="btn-primary">Follow @TheRarePick on X</Link>
