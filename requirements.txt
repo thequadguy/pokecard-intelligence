@@ -2,3 +2,4 @@ google-antigravity
 python-dotenv
 requests
 tweepy
+supabase

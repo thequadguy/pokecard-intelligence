@@ -131,6 +131,30 @@ def scrape_tcgplayer_deals(card_name: str) -> str:
 
 async def run_market_scouting():
     print("🚀 Starting The Rare Pick Market Scout...")
+    print("Connecting to Supabase Database...")
+    
+    from supabase import create_client, Client
+    
+    url = os.getenv("NEXT_PUBLIC_SUPABASE_URL")
+    key = os.getenv("NEXT_PUBLIC_SUPABASE_ANON_KEY")
+    
+    if not url or not key:
+        print("Missing Supabase credentials. Cannot fetch watchlists.")
+        return
+
+    supabase: Client = create_client(url, key)
+    
+    # Fetch active watchlists
+    print("Fetching active watchlists...")
+    response = supabase.table("watchlists").select("*").eq("alert_active", True).execute()
+    watchlists = response.data
+    
+    if not watchlists:
+        print("No active watchlists found. Sleeping.")
+        return
+        
+    print(f"Found {len(watchlists)} active watchlist items.")
+    
     print("Configuring AGY Market Scout Agent...")
     
     config = LocalAgentConfig(
@@ -139,17 +163,23 @@ async def run_market_scouting():
         system_instructions=TemplatedSystemInstructions(
             identity=(
                 "You are the Market Scout Agent for The Rare Pick. "
-                "Your job is to analyze market trends and identify high-value Pokémon card deals. "
-                "Use the scrape_tcgplayer_deals tool to find live listings. "
-                "If a listing is more than 15% below the market average, explicitly flag it as a '🔥 HIGH PRIORITY DEAL' and explain why it's a good buy."
+                "Your job is to act on a list of user target prices and identify if there are current deals matching them. "
+                "Use the scrape_tcgplayer_deals tool to find live listings for each card. "
+                "If a listing price is below the user's 'target_price', explicitly flag it as a '🔥 WATCHLIST ALERT TRIGGERED'."
             )
         )
     )
 
     async with Agent(config) as agent:
-        response = await agent.chat("Scrape the market for Base Set Charizard and tell me if you find any good deals.")
+        # Build prompt from watchlists
+        prompt = "Here is the list of cards the users want to buy, and their maximum target price. Please check each one:\n\n"
+        for item in watchlists:
+            prompt += f"- Card: {item['card_name']} (Set: {item['set_name']}) | Target Price: ${item['target_price']}\n"
+            
+        print("Executing Scout Agent...")
+        response = await agent.chat(prompt)
         print("Scout finished executing.")
-        print(f"Agent Log: {await response.text()}")
+        print(f"Agent Log:\n{await response.text()}")
 
 if __name__ == "__main__":
     import asyncio
