@@ -1,7 +1,10 @@
 import { addToCollection, addToWatchlist } from './actions'
 
 export default async function Market() {
-    const res = await fetch('/api/prices', { cache: 'no-store' });
+  const baseUrl = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : 'http://localhost:3000';
+  const res = await fetch(`${baseUrl}/api/prices`, { cache: 'no-store' });
   const { data: prices } = await res.json();
 
   return (
