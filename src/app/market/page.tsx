@@ -1,11 +1,21 @@
 import { addToCollection, addToWatchlist } from './actions'
 
 export default async function Market() {
-  const baseUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : 'http://localhost:3000';
-  const res = await fetch(`${baseUrl}/api/prices`, { cache: 'no-store' });
-  const { data: prices } = await res.json();
+  // Fetch directly from Pokemon TCG API (avoid self-referencing fetch on Vercel)
+  const query = 'set.id:base1 OR set.id:neo3';
+  const apiUrl = `https://api.pokemontcg.io/v2/cards?q=${encodeURIComponent(query)}&pageSize=12`;
+  const res = await fetch(apiUrl, { cache: 'no-store' });
+  const json = res.ok ? await res.json() : { data: [] };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const prices = json.data.map((card: any) => ({
+    id: card.id,
+    name: card.name,
+    set: card.set.name,
+    marketPrice: card.tcgplayer?.prices?.holofoil?.market || card.tcgplayer?.prices?.normal?.market || card.cardmarket?.prices?.averageSellPrice || 0,
+    trend: '+1.2%',
+    lastSold: 'Recent',
+    imageUrl: card.images?.large || card.images?.small,
+  }));
 
   return (
     <div className="max-w-[1200px] w-[90%] mx-auto py-24">
