@@ -84,7 +84,7 @@ async def run_market_scouting():
     print("Connecting to Supabase Database...")
     
     url = os.getenv("NEXT_PUBLIC_SUPABASE_URL")
-    key = os.getenv("NEXT_PUBLIC_SUPABASE_ANON_KEY")
+    key = os.getenv("SUPABASE_SERVICE_ROLE_KEY") or os.getenv("NEXT_PUBLIC_SUPABASE_ANON_KEY")
     
     if not url or not key:
         print("Missing Supabase credentials. Cannot fetch watchlists.")
