@@ -108,6 +108,56 @@ async def run_content_generation():
         final_text = await response.text()
         print(f"Agent Log: {final_text}")
 
+import argparse
+
+def scrape_tcgplayer_deals(card_name: str) -> str:
+    """
+    Simulates scraping eBay or TCGPlayer for live deals that are underpriced.
+    In production, this would use BeautifulSoup or a dedicated API.
+    """
+    import random
+    
+    # Simulate a deal search
+    market_price = 350.00
+    found_price = market_price * random.uniform(0.7, 0.95) # 5% to 30% below market
+    
+    return json.dumps({
+        "card": card_name,
+        "market_average": market_price,
+        "found_listing_price": round(found_price, 2),
+        "condition": "Near Mint",
+        "url": f"https://tcgplayer.com/mock-listing/{card_name.replace(' ', '-')}"
+    })
+
+async def run_market_scouting():
+    print("🚀 Starting The Rare Pick Market Scout...")
+    print("Configuring AGY Market Scout Agent...")
+    
+    config = LocalAgentConfig(
+        capabilities=CapabilitiesConfig(enable_subagents=False),
+        tools=[scrape_tcgplayer_deals],
+        system_instructions=TemplatedSystemInstructions(
+            identity=(
+                "You are the Market Scout Agent for The Rare Pick. "
+                "Your job is to analyze market trends and identify high-value Pokémon card deals. "
+                "Use the scrape_tcgplayer_deals tool to find live listings. "
+                "If a listing is more than 15% below the market average, explicitly flag it as a '🔥 HIGH PRIORITY DEAL' and explain why it's a good buy."
+            )
+        )
+    )
+
+    async with Agent(config) as agent:
+        response = await agent.chat("Scrape the market for Base Set Charizard and tell me if you find any good deals.")
+        print("Scout finished executing.")
+        print(f"Agent Log: {await response.text()}")
+
 if __name__ == "__main__":
     import asyncio
-    asyncio.run(run_content_generation())
+    parser = argparse.ArgumentParser(description="Run The Rare Pick AI Agents")
+    parser.add_argument("--mode", choices=["content", "scout"], default="content", help="Which agent to run")
+    args = parser.parse_args()
+    
+    if args.mode == "content":
+        asyncio.run(run_content_generation())
+    elif args.mode == "scout":
+        asyncio.run(run_market_scouting())
