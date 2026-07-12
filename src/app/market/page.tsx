@@ -1,7 +1,7 @@
 import { addToCollection, addToWatchlist } from './actions'
 
 export default async function Market() {
-  const res = await fetch('http://localhost:3000/api/prices', { cache: 'no-store' });
+    const res = await fetch('/api/prices', { cache: 'no-store' });
   const { data: prices } = await res.json();
 
   return (
