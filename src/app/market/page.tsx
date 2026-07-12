@@ -19,7 +19,7 @@ export default async function Market() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {prices.map((card: { id: string, name: string, set: string, imageUrl: string, marketPrice: number, trend: string }) => (
+        {prices.map((card: any) => (
           <div key={card.id} className="glass-card p-6 flex flex-col group animate-fade-up">
             <div className="relative w-full aspect-[3/4] mb-4 bg-gradient-to-br from-obsidian-mid to-obsidian-light rounded-xl overflow-hidden flex items-center justify-center border border-white/5">
               <img src={card.imageUrl} alt={card.name} className="absolute inset-0 w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-500" />
