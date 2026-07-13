@@ -7,9 +7,9 @@ on:
 
 jobs:
   run-market-scout:
-      permissions:
-            contents: write
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
