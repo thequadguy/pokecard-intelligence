@@ -63,7 +63,7 @@ async def run_content_generation():
             "Do not use hashtags. Keep it natural and genuine."
         )
         
-        response = client.models.generate_content(model='gemini-2.5-flash-lite', contents=prompt)
+        response = client.models.generate_content(model='gemini-1.5-flash', contents=prompt)
         tweet_text = response.text.strip()
         
         print(f"\nGenerated Tweet:\n{tweet_text}\n")
@@ -124,7 +124,7 @@ async def run_market_scouting():
                     f"Write a short, exciting Twitter alert (under 280 chars) announcing this deal to the community."
                 )
                 
-                ai_response = client.models.generate_content(model='gemini-2.5-flash-lite', contents=prompt)
+                ai_response = client.models.generate_content(model='gemini-1.5-flash', contents=prompt)
                 tweet_text = ai_response.text.strip() + f"\n\nLink: {data['url']}"
                 
                 print(f"Generated Alert:\n{tweet_text}")
