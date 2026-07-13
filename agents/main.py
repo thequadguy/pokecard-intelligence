@@ -63,8 +63,8 @@ async def run_content_generation():
             "Do not use hashtags. Keep it natural and genuine."
         )
         
-        response = client.models.generate_content(model='gemini-1.5-flash', contents=prompt)
-        tweet_text = response.text.strip()
+        try:                 response = client.models.generate_content(model='gemini-1.5-flash', contents=prompt)                 # handled in try/except above             except Exception as gem_err:                 print(f"Gemini error: {gem_err}. Using template.")                 tweet_text = "The thrill of finding that rare Charizard is unmatched. Every card tells a story. Keep hunting, keep collecting. 🎛️ #TheRarePick"
+        # handled in try/except above
         
         print(f"\nGenerated Tweet:\n{tweet_text}\n")
         
@@ -124,7 +124,7 @@ async def run_market_scouting():
                     f"Write a short, exciting Twitter alert (under 280 chars) announcing this deal to the community."
                 )
                 
-                ai_response = client.models.generate_content(model='gemini-1.5-flash', contents=prompt)
+                try:                     ai_try:                 response = client.models.generate_content(model='gemini-1.5-flash', contents=prompt)                 # handled in try/except above             except Exception as gem_err:                 print(f"Gemini error: {gem_err}. Using template.")                 tweet_text = "The thrill of finding that rare Charizard is unmatched. Every card tells a story. Keep hunting, keep collecting. 🎛️ #TheRarePick"                     tweet_text_raw = ai_response.text.strip()                 except Exception as gem_err:                     print(f"Gemini error: {gem_err}. Using template.")                     tweet_text_raw = f"🔥 DEAL ALERT! {item['card_name']} ({item['set_name']}) spotted at ${data['price']} - below our ${item['target_price']} target!"
                 tweet_text = ai_response.text.strip() + f"\n\nLink: {data['url']}"
                 
                 print(f"Generated Alert:\n{tweet_text}")
