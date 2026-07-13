@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import Image from "next/image";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" });
@@ -29,6 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="antialiased font-sans">
+        <Toaster theme="dark" position="bottom-right" />
         <header>
           <nav className="fixed top-0 left-0 right-0 z-50 py-5 transition-all duration-400 bg-obsidian/90 backdrop-blur-md border-b border-white/10" aria-label="Main navigation">
             <div className="flex items-center justify-between max-w-[1200px] w-[90%] mx-auto">

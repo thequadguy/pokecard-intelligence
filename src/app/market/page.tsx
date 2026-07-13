@@ -1,4 +1,5 @@
 import { addToCollection, addToWatchlist } from './actions'
+import AddButton from './AddButton'
 
 export default async function Market() {
   // Fetch directly from Pokemon TCG API (avoid self-referencing fetch on Vercel)
@@ -53,18 +54,22 @@ export default async function Market() {
             </div>
 
             <div className="flex flex-col gap-2 mt-auto">
-              <form action={async () => {
-                'use server'
-                await addToCollection(card)
-              }}>
-                <button className="w-full btn-primary py-2 text-xs">Add to Collection</button>
-              </form>
-              <form action={async () => {
-                'use server'
-                await addToWatchlist(card, card.marketPrice * 0.85)
-              }}>
-                <button className="w-full btn-secondary py-2 text-xs border border-white/10">Add to Watchlist (-15%)</button>
-              </form>
+              <AddButton 
+                action={async () => {
+                  'use server'
+                  return await addToCollection(card)
+                }}
+                label="Add to Collection"
+                className="w-full btn-primary py-2 text-xs"
+              />
+              <AddButton 
+                action={async () => {
+                  'use server'
+                  return await addToWatchlist(card, card.marketPrice * 0.85)
+                }}
+                label="Add to Watchlist (-15%)"
+                className="w-full btn-secondary py-2 text-xs border border-white/10"
+              />
             </div>
           </div>
         ))}

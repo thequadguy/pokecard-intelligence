@@ -4,3 +4,4 @@ python-dotenv
 requests
 tweepy
 supabase
+playwright
