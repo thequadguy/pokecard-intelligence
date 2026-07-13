@@ -55,7 +55,7 @@ async def run_content_generation():
     print("🚀 Starting The Rare Pick Content Engine...")
     
     try:
-        model = genai.GenerativeModel('gemini-2.5-flash')
+        model = genai.GenerativeModel('gemini-1.5-flash')
         
         prompt = (
             "You are the social media manager for 'The Rare Pick', a premium Pokémon card collecting brand. "
@@ -103,7 +103,7 @@ async def run_market_scouting():
         
     print(f"Found {len(watchlists)} active watchlist items.")
     
-    model = genai.GenerativeModel('gemini-2.5-flash')
+    model = genai.GenerativeModel('gemini-1.5-flash')
     twitter = get_twitter_client()
 
     for item in watchlists:
