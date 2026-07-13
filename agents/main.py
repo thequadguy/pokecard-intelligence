@@ -4,7 +4,7 @@ import argparse
 import asyncio
 import requests
 import tweepy
-import google.generativeai as genai
+from google import genai
 from supabase import create_client, Client
 from dotenv import load_dotenv
 
@@ -12,7 +12,7 @@ load_dotenv(dotenv_path=".env.local")
 load_dotenv(dotenv_path=".env")
 
 # Configure APIs
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 def get_twitter_client():
     api_key = os.getenv("TWITTER_API_KEY")
@@ -55,7 +55,7 @@ async def run_content_generation():
     print("🚀 Starting The Rare Pick Content Engine...")
     
     try:
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        # model initialized via client
         
         prompt = (
             "You are the social media manager for 'The Rare Pick', a premium Pokémon card collecting brand. "
@@ -63,7 +63,7 @@ async def run_content_generation():
             "Do not use hashtags. Keep it natural and genuine."
         )
         
-        response = model.generate_content(prompt)
+        response = client.models.generate_content(model='gemini-2.5-flash', contents=prompt)
         tweet_text = response.text.strip()
         
         print(f"\nGenerated Tweet:\n{tweet_text}\n")
@@ -103,7 +103,7 @@ async def run_market_scouting():
         
     print(f"Found {len(watchlists)} active watchlist items.")
     
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    # model initialized via client
     twitter = get_twitter_client()
 
     for item in watchlists:
@@ -124,7 +124,7 @@ async def run_market_scouting():
                     f"Write a short, exciting Twitter alert (under 280 chars) announcing this deal to the community."
                 )
                 
-                ai_response = model.generate_content(prompt)
+                ai_response = client.models.generate_content(model='gemini-2.5-flash', contents=prompt)
                 tweet_text = ai_response.text.strip() + f"\n\nLink: {data['url']}"
                 
                 print(f"Generated Alert:\n{tweet_text}")
