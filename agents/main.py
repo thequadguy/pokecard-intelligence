@@ -12,7 +12,7 @@ load_dotenv(dotenv_path=".env.local")
 load_dotenv(dotenv_path=".env")
 
 # Configure APIs
-client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"), http_options={'api_version': 'v1'})
 
 def get_twitter_client():
     api_key = os.getenv("TWITTER_API_KEY")
