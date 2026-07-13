@@ -40,7 +40,7 @@ export default function RootLayout({
                 <li><Link href="#about" className="text-sm font-medium tracking-widest uppercase text-silver hover:text-brand-blue transition-colors">About</Link></li>
                 <li><Link href="#collection" className="text-sm font-medium tracking-widest uppercase text-silver hover:text-brand-blue transition-colors">Collection</Link></li>
                 <li><Link href="/market" className="text-sm font-medium tracking-widest uppercase text-silver hover:text-brand-blue transition-colors">Market</Link></li>
-                <li><Link href="#brands" className="text-sm font-medium tracking-widest uppercase text-silver hover:text-brand-blue transition-colors">For Brands</Link></li>
+                <li><Link href="/dashboard" className="text-sm font-medium tracking-widest uppercase text-silver hover:text-brand-blue transition-colors">Dashboard</Link></li>
               </ul>
               <div className="flex items-center gap-4">
                 <Link href="https://x.com/TheRarePick" target="_blank" rel="noopener noreferrer" className="btn-secondary hidden sm:flex">
